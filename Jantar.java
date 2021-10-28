@@ -11,7 +11,11 @@ class Jantar {
 			Object hashiEsquerdo = hashis[i];
 			Object hashiDireito = hashis[(i + 1) % hashis.length];
 
-			filosofos[i] = new Filosofo(hashiEsquerdo, hashiDireito);
+			if (i == filosofos.length - 1) {
+				filosofos[i] = new Filosofo(hashiDireito, hashiEsquerdo);
+			} else {
+				filosofos[i] = new Filosofo(hashiEsquerdo, hashiDireito);
+			}
 
 			Thread thread = new Thread(filosofos[i], "Filósofo " + (i + 1));
 			thread.start();
